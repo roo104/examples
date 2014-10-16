@@ -11,11 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.blogspot.jpdevelopment.immutable.hibernate.configuration.Config;
+import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
+import com.blogspot.jpdevelopment.immutable.hibernate.configuration.HsqldbConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {Config.class})
-public class OrderTest {
+@ContextConfiguration(classes = {HsqldbConfig.class})
+public class PersonAccessTest {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,11 +29,12 @@ public class OrderTest {
 
 	@Test
 	public void persist() {
-		Order accessOrder = Order.createOrder();
-		this.session.persist(accessOrder);
+		Person person = new Person("J", "P");
+		this.session.persist(person);
 
-		Order resultOrder = (Order) this.session.get(Order.class, accessOrder.getOrderId());
+		Person resultOrder = (Person) this.session.get(Person.class, person.getId());
 		assertNotNull(resultOrder);
+		assertEquals(person.getId(), resultOrder.getId());
 	}
 
 }

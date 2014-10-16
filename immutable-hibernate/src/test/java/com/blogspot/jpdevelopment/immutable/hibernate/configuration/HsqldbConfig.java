@@ -11,11 +11,11 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.blogspot.jpdevelopment.immutable.hibernate.access.Order;
+import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 
 @EnableTransactionManagement
 @Configuration
-public class Config {
+public class HsqldbConfig {
 
 	@Bean
 	public BasicDataSource dataSource() {
@@ -23,7 +23,6 @@ public class Config {
 		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
 		dataSource.setUrl("jdbc:hsqldb:mem:immutable");
 		dataSource.setUsername("sa");
-		dataSource.setPassword("");
 		return dataSource;
 	}
 
@@ -33,13 +32,13 @@ public class Config {
 
 		Properties hibernateProperties = new Properties();
 		hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+		hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 		hibernateProperties.setProperty("hibernate.show_sql", "true");
 		hibernateProperties.setProperty("hibernate.connection.autocommit", "true");
 
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setHibernateProperties(hibernateProperties);
-		sessionFactory.setAnnotatedClasses(Order.class);
+		sessionFactory.setAnnotatedClasses(Person.class);
 		return sessionFactory;
 	}
 
