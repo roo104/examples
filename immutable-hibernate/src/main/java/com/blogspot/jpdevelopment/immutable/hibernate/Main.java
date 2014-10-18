@@ -2,7 +2,7 @@ package com.blogspot.jpdevelopment.immutable.hibernate;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.blogspot.jpdevelopment.immutable.hibernate.access.PersonAccessRepository;
+import com.blogspot.jpdevelopment.immutable.hibernate.access.PersonRepository;
 import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 import com.blogspot.jpdevelopment.immutable.hibernate.configuration.Application;
 
@@ -10,12 +10,16 @@ public class Main {
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
-		PersonAccessRepository accessRepository = ctx.getBean(PersonAccessRepository.class);
+
+		PersonRepository accessRepository = ctx.getBean(PersonRepository.class);
 
 		Person person = new Person("J", "P");
-		accessRepository.storePerson(person);
+		accessRepository.save(person);
 
-		Person storedPerson = accessRepository.getPerson(person.getId());
+		Person storedPerson = accessRepository.findOne(person.getId());
+
+		System.out.println(storedPerson);
+		ctx.close();
 	}
 
 }

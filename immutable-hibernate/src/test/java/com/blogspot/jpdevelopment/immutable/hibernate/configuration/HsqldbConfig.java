@@ -2,7 +2,7 @@ package com.blogspot.jpdevelopment.immutable.hibernate.configuration;
 
 import java.util.Properties;
 
-import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.commons.dbcp.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -10,8 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 
 @EnableTransactionManagement
 @Configuration
@@ -38,7 +36,7 @@ public class HsqldbConfig {
 
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setHibernateProperties(hibernateProperties);
-		sessionFactory.setAnnotatedClasses(Person.class);
+		//		sessionFactory.setAnnotatedClasses(Person.class);
 		return sessionFactory;
 	}
 

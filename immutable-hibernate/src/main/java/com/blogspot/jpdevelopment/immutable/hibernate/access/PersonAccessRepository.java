@@ -5,29 +5,80 @@ import java.util.UUID;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 
-@Transactional
-@Repository
+
 public class PersonAccessRepository implements PersonRepository {
 
-	//	@Autowired
-	//	private SessionFactory sessionFactory;
-
-	@PersistenceContext(name = "entityManagerFactory")
-	private EntityManager entityManagerFactory;
+	@PersistenceContext
+	private EntityManager entityManager;
 
 	@Override
-	public void storePerson(Person person) {
-		this.entityManagerFactory.persist(person);
-		//		this.sessionFactory.openSession().persist(person);
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 	@Override
-	public Person getPerson(UUID id) {
-		return this.entityManagerFactory.find(Person.class, id);
+	public void delete(UUID arg0) {
+		// TODO Auto-generated method stub
+
 	}
+
+	@Override
+	public void delete(Person arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void delete(Iterable<? extends Person> arg0) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean exists(UUID arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Iterable<Person> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterable<Person> findAll(Iterable<UUID> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Person findOne(UUID id) {
+		return this.entityManager.find(Person.class, id);
+	}
+
+	@Transactional
+	@Override
+	public <S extends Person> S save(S person) {
+		this.entityManager.persist(person);
+		return person;
+	}
+
+	@Override
+	public <S extends Person> Iterable<S> save(Iterable<S> arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -19,6 +19,13 @@ public final class Person {
 	private final String firstname;
 	private final String lastname;
 
+	public Person() {
+		this.id = UUID.randomUUID();
+		this.creationDate = new Date();
+		this.firstname = null;
+		this.lastname = null;
+	}
+
 	public Person(String firstname, String lastname) {
 		this.id = UUID.randomUUID();
 		this.creationDate = new Date();
