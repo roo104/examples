@@ -4,9 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.blogspot.jpdevelopment.immutable.hibernate.access.PersonRepository;
-import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 import com.blogspot.jpdevelopment.immutable.hibernate.configuration.Application;
+import com.blogspot.jpdevelopment.immutable.hibernate.core.domain.Person;
+import com.blogspot.jpdevelopment.immutable.hibernate.core.repository.PersonRepository;
 
 public class Main {
 

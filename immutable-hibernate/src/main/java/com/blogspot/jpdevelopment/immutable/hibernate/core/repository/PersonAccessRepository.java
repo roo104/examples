@@ -1,4 +1,4 @@
-package com.blogspot.jpdevelopment.immutable.hibernate.access;
+package com.blogspot.jpdevelopment.immutable.hibernate.core.repository;
 
 import java.util.UUID;
 
@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
+import com.blogspot.jpdevelopment.immutable.hibernate.core.domain.Person;
 
 
 public class PersonAccessRepository implements PersonRepository {

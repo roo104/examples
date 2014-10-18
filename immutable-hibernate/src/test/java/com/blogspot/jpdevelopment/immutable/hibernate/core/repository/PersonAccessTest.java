@@ -1,4 +1,4 @@
-package com.blogspot.jpdevelopment.immutable.hibernate.access;
+package com.blogspot.jpdevelopment.immutable.hibernate.core.repository;
 
 import static org.junit.Assert.*;
 
@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 import com.blogspot.jpdevelopment.immutable.hibernate.configuration.HsqldbConfig;
+import com.blogspot.jpdevelopment.immutable.hibernate.core.domain.Person;
+import com.blogspot.jpdevelopment.immutable.hibernate.core.repository.PersonRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {HsqldbConfig.class})

@@ -48,23 +48,6 @@ public class HsqldbConfig {
 		return hibernateJpaVendorAdapter;
 	}
 
-	/*	
-		@Bean
-		public LocalSessionFactoryBean sessionFactory() {
-			LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-
-			Properties hibernateProperties = new Properties();
-			hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-			hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-			hibernateProperties.setProperty("hibernate.show_sql", "true");
-			hibernateProperties.setProperty("hibernate.connection.autocommit", "true");
-
-			sessionFactory.setDataSource(dataSource());
-			sessionFactory.setHibernateProperties(hibernateProperties);
-			//		sessionFactory.setAnnotatedClasses(Person.class);
-			return sessionFactory;
-		}
-	*/
 	@Bean
 	public PlatformTransactionManager transactionManager() {
 		return new JpaTransactionManager(entityManagerFactory().getObject());

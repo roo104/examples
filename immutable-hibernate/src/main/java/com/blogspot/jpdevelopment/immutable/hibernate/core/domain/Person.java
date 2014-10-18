@@ -1,4 +1,4 @@
-package com.blogspot.jpdevelopment.immutable.hibernate.access.domain;
+package com.blogspot.jpdevelopment.immutable.hibernate.core.domain;
 
 import java.util.Date;
 import java.util.UUID;
@@ -36,6 +36,10 @@ public class Person {
 
 	public UUID getId() {
 		return this.id;
+	}
+
+	public String getFullName() {
+		return this.firstname + " " + this.lastname;
 	}
 
 	@Override
