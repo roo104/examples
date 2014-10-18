@@ -2,9 +2,6 @@ package com.blogspot.jpdevelopment.immutable.hibernate.access;
 
 import static org.junit.Assert.*;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,22 +16,16 @@ import com.blogspot.jpdevelopment.immutable.hibernate.configuration.HsqldbConfig
 public class PersonAccessTest {
 
 	@Autowired
-	private SessionFactory sessionFactory;
-	private Session session;
-
-	@Before
-	public void setup() {
-		this.session = this.sessionFactory.openSession();
-	}
+	private PersonRepository classUnderTest;
 
 	@Test
 	public void persist() {
 		Person person = new Person("J", "P");
-		this.session.persist(person);
 
-		Person resultOrder = (Person) this.session.get(Person.class, person.getId());
-		assertNotNull(resultOrder);
-		assertEquals(person.getId(), resultOrder.getId());
+		this.classUnderTest.save(person);
+		Person personResult = this.classUnderTest.findOne(person.getId());
+
+		assertNotNull(personResult);
 	}
 
 }

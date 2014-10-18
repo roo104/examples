@@ -22,14 +22,13 @@ public class PersonAccessRepository implements PersonRepository {
 	}
 
 	@Override
-	public void delete(UUID arg0) {
+	public void delete(UUID id) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
-	public void delete(Person arg0) {
-		// TODO Auto-generated method stub
+	public void delete(Person person) {
+		this.entityManager.remove(person);
 
 	}
 

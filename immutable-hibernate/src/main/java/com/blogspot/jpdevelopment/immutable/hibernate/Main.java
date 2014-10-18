@@ -1,5 +1,7 @@
 package com.blogspot.jpdevelopment.immutable.hibernate;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.blogspot.jpdevelopment.immutable.hibernate.access.PersonRepository;
@@ -7,6 +9,8 @@ import com.blogspot.jpdevelopment.immutable.hibernate.access.domain.Person;
 import com.blogspot.jpdevelopment.immutable.hibernate.configuration.Application;
 
 public class Main {
+
+	private static final Logger LOGGER = LoggerFactory.getLogger(Main.class);
 
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
@@ -18,7 +22,7 @@ public class Main {
 
 		Person storedPerson = accessRepository.findOne(person.getId());
 
-		System.out.println(storedPerson);
+		LOGGER.info("Stored person: {}", storedPerson);
 		ctx.close();
 	}
 

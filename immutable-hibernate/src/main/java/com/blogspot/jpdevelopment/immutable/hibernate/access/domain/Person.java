@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "person")
-public final class Person {
+public class Person {
 
 	@Id
 	@Column(columnDefinition = "BINARY(16)", length = 16)
@@ -19,7 +19,8 @@ public final class Person {
 	private final String firstname;
 	private final String lastname;
 
-	public Person() {
+	// Hibernate needs this or it will fail with an InstantiationException
+	private Person() {
 		this.id = UUID.randomUUID();
 		this.creationDate = new Date();
 		this.firstname = null;
