@@ -11,6 +11,7 @@
 
 	<modules>
 		<module>immutable-hibernate</module>
+		<module>spring-rest</module>
 	</modules>
 
 	<properties>
