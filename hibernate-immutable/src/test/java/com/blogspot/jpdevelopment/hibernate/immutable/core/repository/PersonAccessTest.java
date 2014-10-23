@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.blogspot.jpdevelopment.hibernate.immutable.configuration.HsqldbConfig;
+import com.blogspot.jpdevelopment.hibernate.immutable.config.HsqldbConfig;
 import com.blogspot.jpdevelopment.hibernate.immutable.core.domain.Person;
 
 @RunWith(SpringJUnit4ClassRunner.class)

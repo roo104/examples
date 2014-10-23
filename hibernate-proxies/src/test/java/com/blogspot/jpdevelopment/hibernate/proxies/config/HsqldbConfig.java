@@ -1,4 +1,4 @@
-package com.blogspot.jpdevelopment.hibernate.immutable.configuration;
+package com.blogspot.jpdevelopment.hibernate.proxies.config;
 
 import javax.sql.DataSource;
 
@@ -16,7 +16,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.blogspot.jpdevelopment.hibernate.immutable")
+@EnableJpaRepositories(basePackages = "com.blogspot.jpdevelopment.hibernate.proxies")
 @EnableTransactionManagement
 public class HsqldbConfig {
 
@@ -24,7 +24,7 @@ public class HsqldbConfig {
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		dataSource.setUrl("jdbc:hsqldb:mem:immutable");
+		dataSource.setUrl("jdbc:hsqldb:mem:proxies");
 		dataSource.setUsername("sa");
 		return dataSource;
 	}
@@ -34,7 +34,7 @@ public class HsqldbConfig {
 		LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 		entityManagerFactoryBean.setDataSource(dataSource());
 		entityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-		entityManagerFactoryBean.setPackagesToScan("com.blogspot.jpdevelopment.hibernate.immutable");
+		entityManagerFactoryBean.setPackagesToScan("com.blogspot.jpdevelopment.hibernate.proxies");
 		return entityManagerFactoryBean;
 	}
 
@@ -57,5 +57,4 @@ public class HsqldbConfig {
 	public PersistenceAnnotationBeanPostProcessor persistenceAnnotationBeanPostProcessor() {
 		return new PersistenceAnnotationBeanPostProcessor();
 	}
-
 }
