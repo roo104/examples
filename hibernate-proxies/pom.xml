@@ -8,7 +8,6 @@
 		<artifactId>examples</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>com.blogspot.jpdevelopment</groupId>
 	<artifactId>hibernate-proxies</artifactId>
 	<name>${project.artifactId}</name>
 </project>
