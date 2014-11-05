@@ -19,7 +19,7 @@ public class AutoBoxingTest {
 	@Test(expected = NullPointerException.class)
 	public void Integer_Autoboxing_Failure() {
 		MyInt myInt = new MyInt(10);
-		myInt.getIntegerValue(); // Stack trace will point inside the getIntegerValue() method, but no null check from this point is possible
+		myInt.getIntValue(); // Stack trace will point inside the getIntValue() method, but no null check from this point is possible
 	}
 
 	private class MyInt {
@@ -31,7 +31,7 @@ public class AutoBoxingTest {
 			this.intValue = intValue;
 		}
 
-		public int getIntegerValue() {
+		public int getIntValue() {
 			return this.integer;
 		}
 	}
