@@ -4,7 +4,7 @@ dist/
 *.versionsBackup
 *.branch
  
-### Eclipse ###
+### Eclipse/IntelliJ ###
 *.pydevproject
 .project
 .metadata
@@ -20,6 +20,8 @@ local.properties
 .settings/
 .loadpath
 .pmd
+.idea
+*.iml
 
 ## Logs, Diffs, etc ##
 *.log

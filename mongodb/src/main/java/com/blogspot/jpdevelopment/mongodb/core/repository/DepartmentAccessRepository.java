@@ -10,14 +10,14 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.stereotype.Repository;
 
 import com.blogspot.jpdevelopment.mongodb.core.domain.Department;
+import org.springframework.stereotype.Repository;
 
 @Repository
 public class DepartmentAccessRepository implements DepartmentRepository {
 
-	private static final String DEPARTMENT_COLLENCTION = "department";
+	private static final String DEPARTMENT_COLLECTION = "department";
 
 	@Autowired
 	private MongoTemplate template;
@@ -93,12 +93,12 @@ public class DepartmentAccessRepository implements DepartmentRepository {
 		CriteriaDefinition criteriaDefinition = Criteria.where("name").is(name);
 		Query query = new Query();
 		query.addCriteria(criteriaDefinition);
-		return this.template.findOne(query, Department.class, DEPARTMENT_COLLENCTION);
+		return this.template.findOne(query, Department.class, DEPARTMENT_COLLECTION);
 	}
 
 	@Override
 	public <S extends Department> S save(S department) {
-		this.template.save(department, DEPARTMENT_COLLENCTION);
+		this.template.save(department, DEPARTMENT_COLLECTION);
 		return department;
 	}
 

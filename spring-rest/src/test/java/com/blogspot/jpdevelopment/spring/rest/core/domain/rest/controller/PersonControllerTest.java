@@ -4,6 +4,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
+import com.blogspot.jpdevelopment.mongodb.config.MongoDbConfig;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ import com.blogspot.jpdevelopment.spring.rest.configuration.RestConfig;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration()
-@ContextConfiguration(classes = {RestConfig.class})
+@ContextConfiguration(classes = {RestConfig.class, MongoDbConfig.class})
 public class PersonControllerTest {
 
 	MockMvc mockMvc;
@@ -37,12 +38,13 @@ public class PersonControllerTest {
 	@Test
 	public void addPerson() throws Exception {
 		ResultActions resultActions = this.mockMvc.perform(post("/rest/persons").content(
-				"{\"firstname\":\"J\",\"lastname\":\"P\"}").contentType(MediaType.APPLICATION_JSON).accept(
+				"{\"name\":\"Jonas\",\"title\":\"Developer\"}").contentType(MediaType.APPLICATION_JSON).accept(
 				MediaType.APPLICATION_JSON));
 
 		resultActions.andDo(print()).andExpect(status().isCreated());
-		resultActions.andExpect(jsonPath("$.firstname").value("J"));
-		resultActions.andExpect(jsonPath("$.lastname").value("P"));
+		resultActions.andExpect(jsonPath("$.id").exists());
+		resultActions.andExpect(jsonPath("$.name").value("Jonas"));
+		resultActions.andExpect(jsonPath("$.title").value("Developer"));
 	}
 
 }
