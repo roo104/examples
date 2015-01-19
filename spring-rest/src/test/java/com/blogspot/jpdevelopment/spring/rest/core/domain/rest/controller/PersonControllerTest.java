@@ -5,6 +5,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import com.blogspot.jpdevelopment.mongodb.config.MongoDbConfig;
+import com.blogspot.jpdevelopment.mongodb.core.domain.Person;
+import com.blogspot.jpdevelopment.mongodb.core.repository.PersonRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,6 +31,8 @@ public class PersonControllerTest {
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
+	@Autowired
+	private PersonRepository personRepository;
 
 	@Before
 	public void setup() {
@@ -46,5 +50,32 @@ public class PersonControllerTest {
 		resultActions.andExpect(jsonPath("$.name").value("Jonas"));
 		resultActions.andExpect(jsonPath("$.title").value("Developer"));
 	}
+
+	@Test
+	public void getPerson() throws Exception {
+		// Insert a new person behind the REST service
+		Person person = personRepository.save(new Person("Jonas", "Developer", null));
+
+		ResultActions resultActions = this.mockMvc.perform(get("/rest/persons/" + person.getId()).accept(
+				MediaType.APPLICATION_JSON));
+
+		resultActions.andDo(print()).andExpect(status().isOk());
+		resultActions.andExpect(jsonPath("$.id").value(person.getId().toString()));
+		resultActions.andExpect(jsonPath("$.name").value("Jonas"));
+		resultActions.andExpect(jsonPath("$.title").value("Developer"));
+	}
+
+	@Test
+	public void getPersonNoPersonFound() throws Exception {
+		// Lookup a person with given a UUID. Yes it will fail once every 1000 year, but that's OK for now :)
+		ResultActions resultActions = this.mockMvc.perform(get("/rest/persons/38400000-8cf0-11bd-b23e-10b96e4ef00d").accept(
+				MediaType.APPLICATION_JSON));
+
+		resultActions.andDo(print()).andExpect(status().isNoContent());
+		resultActions.andExpect(jsonPath("$.message").value("No person with ID [38400000-8cf0-11bd-b23e-10b96e4ef00d] found"));
+		resultActions.andExpect(jsonPath("$.resource").value("uri=/rest/persons/38400000-8cf0-11bd-b23e-10b96e4ef00d"));
+
+	}
+
 
 }

@@ -3,7 +3,6 @@ package com.blogspot.jpdevelopment.mongodb.core.repository;
 import java.util.List;
 import java.util.UUID;
 
-import com.blogspot.jpdevelopment.mongodb.core.domain.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -99,7 +98,7 @@ public class PersonAccessRepository implements PersonRepository {
 	}
 
 	@Override
-	public <S extends Person> S save(S person) {
+	public <PERSON extends Person> PERSON save(PERSON person) {
 		template.save(person);
 		return person;
 	}

@@ -1,5 +1,6 @@
 package com.blogspot.jpdevelopment.spring.rest.configuration;
 
+import com.blogspot.jpdevelopment.spring.rest.core.domain.rest.domain.NoDataFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +20,15 @@ public class ErrorMapper extends ResponseEntityExceptionHandler {
 	private static final HttpHeaders HEADERS = new HttpHeaders();
 	static {
 		HEADERS.setContentType(MediaType.APPLICATION_JSON);
+	}
+
+	@ExceptionHandler({NoDataFoundException.class})
+	protected ResponseEntity<Object> handleNoDataFoundException(Exception e, WebRequest request) {
+		ErrorMessage errorMessage = new ErrorMessage(e, request.getDescription(false));
+		errorMessage.setCode(HttpStatus.NO_CONTENT.value());
+		LOGGER.debug("No data found: {}", e.getMessage());
+
+		return handleExceptionInternal(e, errorMessage, HEADERS, HttpStatus.NO_CONTENT, request);
 	}
 
 	@ExceptionHandler({Exception.class})
