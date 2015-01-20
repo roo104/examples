@@ -1,4 +1,4 @@
-package com.blogspot.jpdevelopment.spring.rest.core.domain.rest.domain;
+package com.blogspot.jpdevelopment.spring.rest.core.rest.domain;
 
 public class NoDataFoundException extends Exception {
 

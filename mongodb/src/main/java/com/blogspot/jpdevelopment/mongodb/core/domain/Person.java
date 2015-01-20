@@ -1,10 +1,11 @@
 package com.blogspot.jpdevelopment.mongodb.core.domain;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 import org.springframework.data.annotation.Id;
 
-public class Person {
+public class Person implements Serializable {
 
 	@Id
 	private final UUID id;
