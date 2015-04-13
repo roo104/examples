@@ -6,7 +6,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>../spring-async</module>
-    </modules>
+		<module>../awt</module>
+	</modules>
 
     <parent>
 		<groupId>com.blogspot.jpdevelopment</groupId>
