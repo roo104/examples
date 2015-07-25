@@ -9,13 +9,16 @@
 	<name>${project.artifactId}</name>
 
 	<modules>
-		<module>hibernate-immutable</module>
-		<module>hibernate-proxies</module>
+		<module>awt</module>
+        <module>data-type-conversion</module>
+        <module>hibernate-immutable</module>
+        <module>hibernate-proxies</module>
+        <module>mongodb</module>
+        <module>spring-aop</module>
+        <module>spring-async</module>
+        <module>spring-jms</module>
 		<module>spring-rest</module>
-		<module>mongodb</module>
-    	<module>data-type-conversion</module>
-		<module>spring-jms</module>
-		<module>spring-aop</module>
+		<module>spring-transaction</module>
         <module>spring-validation</module>
     </modules>
 

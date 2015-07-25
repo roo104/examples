@@ -24,6 +24,14 @@ public class Person implements Serializable {
         return this.id;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getTitle() {
+        return this.title;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
