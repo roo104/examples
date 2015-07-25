@@ -22,7 +22,7 @@ public class RestPerson implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -30,7 +30,7 @@ public class RestPerson implements Serializable {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -38,7 +38,7 @@ public class RestPerson implements Serializable {
     }
 
     public Person toPerson() {
-        return new Person(this.name, title, null);
+        return new Person(this.name, this.title, null);
     }
 
     public static RestPerson fromPerson(Person person) {

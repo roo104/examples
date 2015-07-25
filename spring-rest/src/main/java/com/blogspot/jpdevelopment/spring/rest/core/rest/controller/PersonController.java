@@ -35,7 +35,8 @@ public class PersonController {
 		if (person == null) {
 			throw new NoDataFoundException(String.format("No person with ID [%s] found", id.toString()));
 		}
-		return new ResponseEntity<RestPerson>(RestPerson.fromPerson(person), HttpStatus.OK);
+		ResponseEntity<RestPerson> restPersonResponseEntity = new ResponseEntity<RestPerson>(RestPerson.fromPerson(person), HttpStatus.OK);
+		return restPersonResponseEntity;
 	}
 
 }

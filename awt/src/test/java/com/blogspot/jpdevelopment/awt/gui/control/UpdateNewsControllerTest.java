@@ -35,7 +35,7 @@ public class UpdateNewsControllerTest {
 
         //WHEN
         when(this.newsReader.getNews()).thenReturn(newses);
-        UpdateNewsResult result = updateNewsController.updateNews(new UpdateNewsEvent());
+        UpdateNewsResult result = this.updateNewsController.updateNews(new UpdateNewsEvent());
 
         // THEN
         assertEquals("headline\ncontext\nquote\n\n", result.prettyPrint());

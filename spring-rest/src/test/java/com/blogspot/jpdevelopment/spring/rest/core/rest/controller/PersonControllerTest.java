@@ -54,7 +54,7 @@ public class PersonControllerTest {
 	@Test
 	public void getPerson() throws Exception {
 		// Insert a new person behind the REST service
-		Person person = personRepository.save(new Person("Jonas", "Developer", null));
+		Person person = this.personRepository.save(new Person("Jonas", "Developer", null));
 
 		ResultActions resultActions = this.mockMvc.perform(get("/rest/persons/" + person.getId()).accept(
 				MediaType.APPLICATION_JSON));

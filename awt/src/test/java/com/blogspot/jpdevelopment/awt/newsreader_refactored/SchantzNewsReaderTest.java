@@ -23,7 +23,7 @@ public class SchantzNewsReaderTest {
 
     @Test
     public void testGetNews() throws Exception {
-        List<News> news = schantzNewsReader.getNews(new NewsResource(new File("src/main/resources/www.schantz.com.htm")));
+        List<News> news = this.schantzNewsReader.getNews(new NewsResource(new File("src/main/resources/www.schantz.com.htm")));
 
         assertTrue(news.size() == 55);
     }

@@ -24,8 +24,8 @@ public class AsyncServiceTest {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
-        asyncService.asyncMethodWithReturnType().get();
-        asyncService.asyncMethodWithReturnType().get();
+        this.asyncService.asyncMethodWithReturnType().get();
+        this.asyncService.asyncMethodWithReturnType().get();
 
         stopWatch.stop();
         double totalTimeSeconds = stopWatch.getTotalTimeSeconds();
@@ -42,7 +42,7 @@ public class AsyncServiceTest {
         Thread thread1 = new Thread() {
             public void run(){
                 try {
-                    asyncService.asyncMethodWithReturnType().get();
+                    AsyncServiceTest.this.asyncService.asyncMethodWithReturnType().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
@@ -53,7 +53,7 @@ public class AsyncServiceTest {
         Thread thread2 = new Thread() {
             public void run(){
                 try {
-                    asyncService.asyncMethodWithReturnType().get();
+                    AsyncServiceTest.this.asyncService.asyncMethodWithReturnType().get();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {

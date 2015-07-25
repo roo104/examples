@@ -23,8 +23,8 @@ public class SchantzOfflineNewsReaderTest {
 
     @Test
     public void testGetNews() throws Exception {
-        schantzNewsReader.setBasePath("");
-        List<News> news = schantzNewsReader.getNews();
+        this.schantzNewsReader.setBasePath("");
+        List<News> news = this.schantzNewsReader.getNews();
 
         assertTrue(news.size() > 0);
     }

@@ -20,7 +20,7 @@ public class UpdateNewsController {
 
     public UpdateNewsResult updateNews(UpdateNewsEvent updateNewsEvent) {
 //        List<News> news = newsReader.getNews(new NewsResource(new File(System.getProperty("user.dir") + "/awt/src/main/resources/www.schantz.com.htm")));
-        List<News> news = newsReader.getNews();
+        List<News> news = this.newsReader.getNews();
         return UpdateNewsResult.fromNews(news);
     }
 }

@@ -26,7 +26,7 @@ public class SchantzOfflineNewsReader implements NewsReader {
     public List<News> getNews() {
         List<News> newsList = new ArrayList<>();
         try {
-            File input = new File(basePath + "src/main/resources/www.schantz.com.htm");
+            File input = new File(this.basePath + "src/main/resources/www.schantz.com.htm");
             Document doc = Jsoup.parse(input, "UTF-8", "http://www.schantz.com/");
 
             Elements newsElements = doc.select("span.maintextp");

@@ -21,10 +21,10 @@ public class NewsResource {
 
     public Document readDocument() throws IOException {
         Document document = null;
-        if (url != null) {
+        if (this.url != null) {
             document = Jsoup.connect("http://www.schantz.com/?page_id=2707&lang=da").get();
-        } else if (file != null) {
-            document = Jsoup.parse(file, "UTF-8", "http://www.schantz.com/");
+        } else if (this.file != null) {
+            document = Jsoup.parse(this.file, "UTF-8", "http://www.schantz.com/");
         }
 
         return document;

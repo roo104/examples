@@ -2,9 +2,10 @@ package com.blogspot.jpdevelopment.mongodb.core.domain;
 
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Person {
+public class Person implements Serializable {
 
     @Id
     private final UUID id;
@@ -26,10 +27,10 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "department=" + department +
-                ", id=" + id +
-                ", name='" + name + '\'' +
-                ", title='" + title + '\'' +
+                "department=" + this.department +
+                ", id=" + this.id +
+                ", name='" + this.name + '\'' +
+                ", title='" + this.title + '\'' +
                 '}';
     }
 }

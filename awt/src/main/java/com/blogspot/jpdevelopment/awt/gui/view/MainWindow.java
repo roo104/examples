@@ -19,11 +19,11 @@ public class MainWindow extends Frame {
     ApplicationContext context = new AnnotationConfigApplicationContext(AwtConfig.class);
 
     public MainWindow() {
-        textArea = setupTextArea();
-        button = setupNewsButton();
+        this.textArea = setupTextArea();
+        this.button = setupNewsButton();
 
         setupCloseWindowEvent();
-        setupFrame(textArea, button);
+        setupFrame(this.textArea, this.button);
     }
 
     private TextArea setupTextArea() {
@@ -33,14 +33,14 @@ public class MainWindow extends Frame {
     }
 
     private Button setupNewsButton() {
-        UpdateNewsController updateNewsController = context.getBean(UpdateNewsController.class);
+        UpdateNewsController updateNewsController = this.context.getBean(UpdateNewsController.class);
 
         Button b = new Button("Update news");
         b.setBounds(25, 750, 100, 25);
         b.addActionListener(e -> {
             System.out.println("Button has been clicked");
             UpdateNewsResult updateNewsResult = updateNewsController.updateNews(new UpdateNewsEvent());
-            textArea.append(updateNewsResult.prettyPrint());
+            this.textArea.append(updateNewsResult.prettyPrint());
         });
         return b;
     }

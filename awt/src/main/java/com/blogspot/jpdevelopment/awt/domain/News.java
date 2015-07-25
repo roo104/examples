@@ -10,10 +10,10 @@ public class News {
         this.headline = headline;
     }
 
-    public String getHeadline() { return headline; }
+    public String getHeadline() { return this.headline; }
 
     public String getContext() {
-        return context;
+        return this.context;
     }
 
     public void setContext(String context) {
@@ -21,7 +21,7 @@ public class News {
     }
 
     public String getQuote() {
-        return quote;
+        return this.quote;
     }
 
     public void setQuote(String quote) {

@@ -46,7 +46,7 @@ public final class UpdateNewsResult {
     public String prettyPrint() {
         StringBuilder sb = new StringBuilder();
 
-        for (String str : newsList) {
+        for (String str : this.newsList) {
             sb.append(str);
         }
 

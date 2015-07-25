@@ -1,7 +1,5 @@
 package com.blogspot.jpdevelopment.hibernate.proxies.config;
 
-import javax.sql.DataSource;
-
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,6 +13,8 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
+import javax.sql.DataSource;
 
 @ComponentScan("com.blogspot.jpdevelopment.hibernate.immutable")
 @Configuration
@@ -53,6 +53,9 @@ public class JpaConfig {
 
 	@Bean
 	public PlatformTransactionManager transactionManager() {
+		JpaTransactionManager tm =
+				new JpaTransactionManager();
+		tm.afterPropertiesSet();
 		return new JpaTransactionManager(entityManagerFactory().getObject());
 	}
 

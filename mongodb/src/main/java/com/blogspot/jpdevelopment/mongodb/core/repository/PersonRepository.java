@@ -26,7 +26,7 @@ public class PersonRepository {
 	}
 
 	public Person save(Person person) {
-		template.save(person);
+        this.template.save(person);
 		return person;
 	}
 
