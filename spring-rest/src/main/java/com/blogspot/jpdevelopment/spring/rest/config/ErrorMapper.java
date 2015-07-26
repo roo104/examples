@@ -35,7 +35,7 @@ public class ErrorMapper extends ResponseEntityExceptionHandler {
 	protected ResponseEntity<Object> handleDefaultException(Exception e, WebRequest request) {
 		ErrorMessage errorMessage = new ErrorMessage(e, request.getDescription(false));
 		errorMessage.setCode(HttpStatus.INTERNAL_SERVER_ERROR.value());
-		LOGGER.warn("Cought an exception from REST layer", e);
+		LOGGER.warn("Caught an exception from REST layer", e);
 
 		return handleExceptionInternal(e, errorMessage, HEADERS, HttpStatus.INTERNAL_SERVER_ERROR, request);
 	}

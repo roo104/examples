@@ -1,13 +1,14 @@
 package com.blogspot.jpdevelopment.spring.validation;
 
-/**
- * Created by jp on 23-07-2015.
- */
 public class Person {
 
-    private final String firstname;
-    private final String lastname;
-    private final int age;
+    private String firstname;
+    private String lastname;
+    private int age;
+
+    public Person() {
+
+    }
 
     public Person(String firstname, String lastname, int age) {
         this.firstname = firstname;
@@ -21,5 +22,13 @@ public class Person {
 
     public int getAge() {
         return this.age;
+    }
+
+    public String getFirstname() {
+        return this.firstname;
+    }
+
+    public String getLastname() {
+        return this.lastname;
     }
 }
