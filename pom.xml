@@ -11,6 +11,7 @@
 	<modules>
 		<module>awt</module>
         <module>data-type-conversion</module>
+		<module>example</module>
         <module>hibernate-immutable</module>
         <module>hibernate-proxies</module>
         <module>mongodb</module>
