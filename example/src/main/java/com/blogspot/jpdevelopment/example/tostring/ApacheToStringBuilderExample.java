@@ -26,5 +26,7 @@ public class ApacheToStringBuilderExample {
         // com.blogspot.jpdevelopment.example.tostring.ToString@31befd9f[attributeOne,attributeAnother]
         System.out.println("No field names toString: " + ToStringBuilder.reflectionToString(toString, ToStringStyle.NO_FIELD_NAMES_STYLE));
 
+        // Custom toString: com.blogspot.jpdevelopment.example.tostring.ToString[start]attributeOne=attributeOne,attributeAnother=attributeAnother[end]
+        System.out.println("Custom toString: " + ToStringBuilder.reflectionToString(toString, new MyToStringStyle()));
     }
 }
