@@ -9,6 +9,7 @@
 	<name>${project.artifactId}</name>
 
 	<modules>
+		<module>annotation-runtime</module>
 		<module>awt</module>
         <module>data-type-conversion</module>
 		<module>example</module>
