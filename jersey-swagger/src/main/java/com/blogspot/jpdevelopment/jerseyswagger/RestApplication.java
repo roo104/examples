@@ -3,15 +3,13 @@ package com.blogspot.jpdevelopment.jerseyswagger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 import io.swagger.jaxrs.config.BeanConfig;
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
-import org.glassfish.jersey.servlet.ServletContainer;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
 import java.util.Set;
 
+@ApplicationPath("/services/rest/")
 public class RestApplication extends Application {
 
     protected final Set<Object> singletons = new HashSet<>();
@@ -21,14 +19,17 @@ public class RestApplication extends Application {
     private static JacksonJsonProvider jacksonJsonProvider = new JacksonJsonProvider();
 
     public RestApplication() {
+        jacksonJsonProvider.setMapper(objectMapper);
+
         classes.add(PersonService.class);
 
         classes.add(io.swagger.jaxrs.listing.ApiListingResource.class);
         classes.add(io.swagger.jaxrs.listing.SwaggerSerializers.class);
 
+        singletons.add(jacksonJsonProvider);
+
         BeanConfig beanConfig = new BeanConfig();
-//        beanConfig.setHost("http://localhost:9001");
-        beanConfig.setBasePath("/services/rest/");
+        beanConfig.setBasePath("/services/rest");
         beanConfig.setVersion("1.0");
         beanConfig.setTitle("API");
         beanConfig.setDescription("desc");
@@ -46,16 +47,4 @@ public class RestApplication extends Application {
         return classes;
     }
 
-    public static void main(String args[]) throws Exception {
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.setContextPath("/");
-
-        ServletHolder jerseyServlet = context.addServlet(ServletContainer.class, "/services/rest/*");
-        jerseyServlet.setInitOrder(0);
-        jerseyServlet.setInitParameter("javax.ws.rs.Application", RestApplication.class.getName());
-
-        Server httpServer = new Server(9001);
-        httpServer.setHandler(context);
-        httpServer.start();
-    }
 }
